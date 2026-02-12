@@ -1,5 +1,5 @@
 '''
-
+기존의 다익스트라 알고리즘에서 거리가 1로 고정된 상황
 '''
 import heapq
 import sys
@@ -44,4 +44,5 @@ if len(result) == 0:
     print(-1)
 else:
     for city in result:
+
         print(city)
