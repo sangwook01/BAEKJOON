@@ -5,6 +5,8 @@ N의 값이 1,000,000까지로 범위가 매우 넓음....
 일반적인 서로소 집합 자료 구조를 활용하기엔 무리가 있음.. => 런타임 에러 발생
 1. 이때 바꿀 수 있는 것 (재귀적 함수 호출을 while문으로 변경...)
 2. 재귀 호출의 횟수 늘리기 (이건 코딩테스트에 있어서 별로 좋지 않은 구조라 생각)
+3. path halving이라는 것이 존재! 해당 개념을 활용해보자!
+
 '''
 
 import sys
@@ -15,7 +17,8 @@ def find_parent(parent, x):
     if parent[x] != x:
         parent[x] = find_parent(parent, parent[x])
     return parent[x]
-'''
+    
+# 일반적인 while문
 def find_parent(parent, x):
     root = x
     while parent[root] != root:
@@ -28,7 +31,13 @@ def find_parent(parent, x):
         x = next_x
 
     return root
-
+'''
+# pass halving을 적용
+def find_parent(parent,x):
+    while parent[x] != x:
+        parent[x] = parent[parent[x]]
+        x = parent[x]
+    return x
 
 def union_parent(parent, a, b):
     a = find_parent(parent, a)
@@ -56,3 +65,4 @@ for i in range(m):
             print("YES")
         else:
             print("NO")
+
