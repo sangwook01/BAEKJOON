@@ -32,7 +32,7 @@ def find_parent(parent, x):
 
     return root
 '''
-# pass halving을 적용
+# path halving을 적용
 def find_parent(parent,x):
     while parent[x] != x:
         parent[x] = parent[parent[x]]
@@ -65,4 +65,5 @@ for i in range(m):
             print("YES")
         else:
             print("NO")
+
 
